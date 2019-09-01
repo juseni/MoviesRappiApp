@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="color_dark_gray">#B1B1B1</color>
+    <color name="prussian_blue">#06365B</color>
+    
+    <color name="wedgewood">#476B8D</color>
+    <color name="nepal">#89A1B6</color>
+    <color name="silver">#BDBDBD</color>
+    <color name="eclipse">#3E3E3E</color>
+</resources>

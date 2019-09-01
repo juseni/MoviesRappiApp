@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingStart="@dimen/dimen_4dp"
+              android:paddingEnd="@dimen/dimen_4dp"
+              android:paddingTop="@dimen/dimen_24dp"
+              android:paddingBottom="@dimen/dimen_24dp"
+              android:background="@android:color/white">
+
+    <TextView
+            style="@style/DetailMovieTextTheme"
+            android:text="@string/information_text"
+            android:fontFamily="@font/exo_2_medium"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_48dp"
+            android:text="@string/about_me_text"
+            android:fontFamily="@font/exo_2_medium"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"/>
+
+</LinearLayout>

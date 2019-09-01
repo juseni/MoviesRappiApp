@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Movies Rappi</string>
+    <string name="action_settings">Settings</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="search">Search movie...</string>
+    <string name="poster_info">Movie poster</string>
+    <string name="popular_movie_card_subtitle">Popularity: %s</string>
+    <string name="rated_movie_card_subtitle">Rating: %s / 10.0</string>
+    <string name="upcoming_movie_card_subtitle">Release on %s</string>
+    <string name="error_message">Error trying to get data</string>
+    <string name="movie_overview">Overview</string>
+    <string name="movie_description_background">Background image of movie</string>
+    <string name="text_vote_average">%s/10.0</string>
+    <string name="try_again_button">Try again</string>
+    <string name="searching_text">Searching in %s movies...</string>
+    <string name="information_text">About me...</string>
+    <string name="about_me_text">This application was made by Juan Sebastian Niño using the TMDB API\n\n  © 2019</string>
+    <string name="loading_movies">Loading more movies...</string>
+</resources>

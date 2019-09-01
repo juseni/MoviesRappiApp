@@ -1,0 +1,65 @@
+<resources>
+
+    <style name="Theme.AppBaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColorTertiary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@color/colorAccent</item>
+        <item name="android:textColorSecondaryInverse">@color/colorAccent</item>
+        <item name="android:textColorTertiaryInverse">@color/colorAccent</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppBaseTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/exo_2_medium</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <!-- Theme for Details Activity to make the status bar transparent -->
+    <style name="AppTheme.Details" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="AppBarTheme" parent="AppTheme">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="android:colorControlNormal">@color/colorAccent</item>
+    </style>
+
+    <style name="PosterTextTheme">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/exo_2_medium</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailMovieTextTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/eclipse</item>
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="base_guideline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="guideline_horizontal" parent="base_guideline">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="guideline_vertical" parent="base_guideline">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+</resources>

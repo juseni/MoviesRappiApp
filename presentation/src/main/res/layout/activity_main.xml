@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.base.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/wedgewood"
+            app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/wedgewood"
+                android:theme="@style/AppBarTheme">
+
+            <com.arlib.floatingsearchview.FloatingSearchView
+                    android:id="@+id/searchMovie"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:floatingSearch_backgroundColor="@android:color/white"
+                    app:floatingSearch_close_search_on_keyboard_dismiss="true"
+                    app:floatingSearch_dimBackground="false"
+                    app:floatingSearch_leftActionMode="showSearch"
+                    app:floatingSearch_searchBarMarginLeft="@dimen/dimen_8dp"
+                    app:floatingSearch_searchBarMarginRight="@dimen/dimen_8dp"
+                    app:floatingSearch_searchHint="@string/search"
+                    app:floatingSearch_showSearchKey="true"
+                    app:floatingSearch_viewTextColor="@color/colorAccent"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_gray"
+            android:animateLayoutChanges="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ProgressBar
+                android:id="@+id/loadingApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="visible"
+                android:theme="@style/Theme.AppCompat.Light"/>
+
+        <FrameLayout android:id="@+id/errorApp"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:visibility="gone">
+
+            <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_18"
+                    android:text="@string/error_message"/>
+
+            <Button
+                    android:id="@+id/tryAgainButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/light_gray"
+                    android:backgroundTint="@color/wedgewood"
+                    android:layout_gravity="center"
+                    android:text="@string/try_again_button"
+                    android:layout_marginTop="@dimen/dimen_48dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+                android:id="@+id/moviesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+            <fragment
+                    android:id="@+id/navHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    app:navGraph="@navigation/movies_navigation"
+                    app:defaultNavHost="true"/>
+        </FrameLayout>
+
+        <FrameLayout
+                android:id="@+id/progressBarMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/silver"
+                android:layout_above="@+id/bottomNavigationMovies"
+                android:visibility="gone">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/eclipse"
+                    android:text="@string/loading_movies"/>
+
+
+            <ImageView
+                    android:id="@+id/movieLoadingIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_movie_loading"/>
+        </FrameLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationMovies"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_54dp"
+                android:background="@android:color/white"
+                android:layout_alignParentBottom="true"
+                app:itemBackground="?android:selectableItemBackground"
+                app:itemIconTint="@color/selector"
+                app:itemTextColor="@color/selector"
+                app:menu="@menu/menu_bottom_nav"/>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
