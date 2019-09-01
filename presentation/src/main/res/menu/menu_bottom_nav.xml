@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/actionPopular"
+        android:enabled="true"
+        android:title="@string/popular"
+        android:icon="@drawable/ic_timeline_black_24dp"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/actionRated"
+        android:enabled="true"
+        android:title="@string/top_rated"
+        android:icon="@drawable/ic_stars_black_24dp"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/actionUpcoming"
+        android:enabled="true"
+        android:icon="@drawable/ic_hourglass_empty_black_24dp"
+        android:title="@string/upcoming"
+        app:showAsAction="ifRoom"/>
+</menu>
