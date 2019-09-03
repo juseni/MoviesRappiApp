@@ -6,6 +6,7 @@ import com.juan.nino.data.db.entity.MovieInformationEntity
 import com.juan.nino.data.db.entity.RatedMovieEntity
 import com.juan.nino.data.platform.NetworkHandler
 import com.juan.nino.data.source.source.MoviesApi
+import com.juan.nino.data.source.source.MoviesApi.Companion.DEFAULT_PAGE
 import com.juan.nino.domain.model.MoviesInformation
 import com.juan.nino.domain.repositories.RatedMoviesRepository
 import io.reactivex.Single
@@ -26,7 +27,10 @@ class RatedMoviesRepositoryImpl @Inject constructor(
         private const val RATED_MOVIES_SORT_BY = "vote_average.desc"
     }
 
-    private fun insertRatedMoviesPersistence(ratedMovies: List<RatedMovieEntity>?) {
+    private fun insertRatedMoviesPersistence(ratedMovies: List<RatedMovieEntity>?, currentPage: Int) {
+        if (currentPage == DEFAULT_PAGE) {
+            ratedMoviesdao.deleteRatedMovies()
+        }
         ratedMoviesdao.insertRatedMovies(ratedMovies)
     }
 
@@ -38,7 +42,7 @@ class RatedMoviesRepositoryImpl @Inject constructor(
                         MovieInformationEntity.transformPersistance(
                             response.body()?.results,
                             TOP_RATED_MOVIES
-                        ) as List<RatedMovieEntity>
+                        ) as List<RatedMovieEntity>, page
                     )
                     val ratedMovies = MovieInformationEntity.transform(response.body()!!)
                     Single.just(ratedMovies)
@@ -56,13 +60,17 @@ class RatedMoviesRepositoryImpl @Inject constructor(
     }
 
     private fun getRatedMoviesPersistence(): Single<MoviesInformation> {
-        return ratedMoviesdao.getRatedMovies().map {
-            MovieInformationEntity.transform(
-                MovieInformationEntity(
-                    0, RatedMovieEntity.transform(it),
-                    0, 0
+        return try {
+            ratedMoviesdao.getRatedMovies().map {
+                MovieInformationEntity.transform(
+                    MovieInformationEntity(
+                        0, RatedMovieEntity.transform(it),
+                        0, 0
+                    )
                 )
-            )
+            }
+        } catch (e: Exception) {
+            Single.error(Exception("No data received"))
         }
     }
 }

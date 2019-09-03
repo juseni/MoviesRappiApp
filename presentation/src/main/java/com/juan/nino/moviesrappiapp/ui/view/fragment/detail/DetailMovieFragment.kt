@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_detail_movie.*
 import com.juan.nino.moviesrappiapp.utils.constants.MoviesRappiConstants.IMAGE_URL_PATH
 import com.juan.nino.moviesrappiapp.utils.getProgressBar
 import com.juan.nino.moviesrappiapp.utils.stringFormatDate
-import javax.inject.Inject
 import kotlin.math.abs
 
 /**
@@ -27,7 +26,7 @@ class DetailMovieFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        appComponent.inject(this@DetailMovieFragment)
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
@@ -93,6 +92,5 @@ class DetailMovieFragment : BaseFragment() {
                 posterImageView!!.visibility = View.VISIBLE
         })
     }
-
 
 }

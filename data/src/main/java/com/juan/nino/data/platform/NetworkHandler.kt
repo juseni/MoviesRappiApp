@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Singleton
 class NetworkHandler
 @Inject constructor(private val context: Context) {
-    //val isConnected get() = //context.networkInfo?.isConnectedOrConnecting
     fun isConnected(): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -20,9 +19,3 @@ class NetworkHandler
         return networkInfo != null && networkInfo.isConnected
     }
 }
-
-
-/*
-val Context.networkInfo: NetworkInfo?
-    get() =
-        (this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo*/

@@ -23,6 +23,7 @@ interface MoviesApi {
         const val TOP_RATED_MOVIES = 0x0002
         const val UPCOMING_MOVIES = 0x0003
         const val API_AUTH_TOKEN = "api_key"
+        const val DEFAULT_PAGE = 1
     }
 
     @Headers("Content-Type: application/json")
@@ -32,6 +33,7 @@ interface MoviesApi {
         @Query(PAGE) page: Int
     ): Single<Response<MovieInformationEntity>>
 
+    @Headers("Content-Type: application/json")
     @GET(DISCOVER_MOVIES)
     fun getUpcomingMovies(
         @Query(INIT_DATE_SEARCH) initDate: String,

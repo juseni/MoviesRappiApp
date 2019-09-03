@@ -1,4 +1,4 @@
-#Sun Sep 01 00:57:26 COT 2019
+#Tue Sep 03 11:21:54 COT 2019
 base.0=C\:\\Users\\juan.nino\\Documents\\MoviesRappi\\presentation\\build\\intermediates\\transforms\\dexMerger\\debug\\5
 path.0=classes.dex
 renamed.0=classes.dex

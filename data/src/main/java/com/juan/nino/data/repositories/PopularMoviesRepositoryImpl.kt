@@ -1,5 +1,6 @@
 package com.juan.nino.data.source.respositories
 
+import android.database.DatabaseErrorHandler
 import com.google.gson.Gson
 import com.juan.nino.data.db.dao.PopularMoviesDao
 import com.juan.nino.data.db.entity.MovieInformationEntity
@@ -11,6 +12,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 import com.juan.nino.data.db.entity.MovieInformationEntity.Companion.transformPersistance
 import com.juan.nino.data.platform.NetworkHandler
+import com.juan.nino.data.source.source.MoviesApi.Companion.DEFAULT_PAGE
 import com.juan.nino.data.source.source.MoviesApi.Companion.POPULAR_MOVIES
 
 /**
@@ -27,7 +29,10 @@ class PopularMoviesRepositoryImpl @Inject constructor(
         private const val POPULAR_MOVIES_SORT_BY = "popularity.desc"
     }
 
-    private fun insertPopularMoviesPersistence(popularMovies: List<PopularMovieEntity>?) {
+    private fun insertPopularMoviesPersistence(popularMovies: List<PopularMovieEntity>?, currentPage: Int) {
+        if (currentPage == DEFAULT_PAGE) {
+            popularMoviesdao.deletePopularMovies()
+        }
         popularMoviesdao.insertPopularMovies(popularMovies)
     }
 
@@ -36,7 +41,7 @@ class PopularMoviesRepositoryImpl @Inject constructor(
             return api.getPopularOrRatedMovies(POPULAR_MOVIES_SORT_BY, page).flatMap { response ->
                 if (response.isSuccessful) {
                     insertPopularMoviesPersistence(transformPersistance(response.body()?.results,
-                        POPULAR_MOVIES) as List<PopularMovieEntity>
+                        POPULAR_MOVIES) as List<PopularMovieEntity>, page
                     )
                     val popularMovies = MovieInformationEntity.transform(response.body()!!)
                     Single.just(popularMovies)
@@ -54,13 +59,17 @@ class PopularMoviesRepositoryImpl @Inject constructor(
     }
 
     private fun getPopularMoviesPersistence(): Single<MoviesInformation> {
-        return popularMoviesdao.getPopularMovies().map {
-            MovieInformationEntity.transform(
-                MovieInformationEntity(
-                    0, PopularMovieEntity.transform(it),
-                    0, 0
+        return try {
+            popularMoviesdao.getPopularMovies().map {
+                MovieInformationEntity.transform(
+                    MovieInformationEntity(
+                        0, PopularMovieEntity.transform(it),
+                        0, 0
+                    )
                 )
-            )
+            }
+        } catch (e: Exception) {
+            Single.error(Exception("No data received"))
         }
     }
 

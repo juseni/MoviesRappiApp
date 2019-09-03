@@ -1354,7 +1354,6 @@ id posterCardView
 id posterImageView
 id posterMovie
 id progressBarMovies
-id progressBarMovies1
 id progress_circular
 id progress_horizontal
 id radio
@@ -1531,9 +1530,6 @@ layout design_text_input_password_icon
 layout floating_search_layout
 layout fragment_detail_movie
 layout fragment_movie_list
-layout fragment_popular_movies
-layout fragment_top_rated_movies
-layout fragment_upcoming_movies
 layout movie_item
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include

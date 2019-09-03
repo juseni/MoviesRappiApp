@@ -156,5 +156,4 @@ class AppModule(private val application: MoviesRappiApplication) {
     @ViewModelKey(UpcomingMoviesViewModel::class)
     fun provideUpcomingMoviesViewModel(upcomingMoviesUseCase: UpcomingMoviesUseCase): ViewModel =
         UpcomingMoviesViewModel(upcomingMoviesUseCase)
-
 }

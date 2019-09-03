@@ -2,6 +2,7 @@
 package com.juan.nino.moviesrappiapp.ui.view.fragment.popular;
 
 import androidx.lifecycle.ViewModelProvider;
+import com.juan.nino.data.platform.NetworkHandler;
 import dagger.MembersInjector;
 import javax.inject.Provider;
 
@@ -9,23 +10,34 @@ public final class PopularMoviesFragment_MembersInjector
     implements MembersInjector<PopularMoviesFragment> {
   private final Provider<ViewModelProvider.Factory> vmFactoryProvider;
 
+  private final Provider<NetworkHandler> networkHandlerProvider;
+
   public PopularMoviesFragment_MembersInjector(
-      Provider<ViewModelProvider.Factory> vmFactoryProvider) {
+      Provider<ViewModelProvider.Factory> vmFactoryProvider,
+      Provider<NetworkHandler> networkHandlerProvider) {
     this.vmFactoryProvider = vmFactoryProvider;
+    this.networkHandlerProvider = networkHandlerProvider;
   }
 
   public static MembersInjector<PopularMoviesFragment> create(
-      Provider<ViewModelProvider.Factory> vmFactoryProvider) {
-    return new PopularMoviesFragment_MembersInjector(vmFactoryProvider);
+      Provider<ViewModelProvider.Factory> vmFactoryProvider,
+      Provider<NetworkHandler> networkHandlerProvider) {
+    return new PopularMoviesFragment_MembersInjector(vmFactoryProvider, networkHandlerProvider);
   }
 
   @Override
   public void injectMembers(PopularMoviesFragment instance) {
     injectVmFactory(instance, vmFactoryProvider.get());
+    injectNetworkHandler(instance, networkHandlerProvider.get());
   }
 
   public static void injectVmFactory(
       PopularMoviesFragment instance, ViewModelProvider.Factory vmFactory) {
     instance.vmFactory = vmFactory;
+  }
+
+  public static void injectNetworkHandler(
+      PopularMoviesFragment instance, NetworkHandler networkHandler) {
+    instance.networkHandler = networkHandler;
   }
 }

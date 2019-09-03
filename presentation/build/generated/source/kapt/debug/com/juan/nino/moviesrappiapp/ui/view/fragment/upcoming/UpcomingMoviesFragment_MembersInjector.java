@@ -2,6 +2,7 @@
 package com.juan.nino.moviesrappiapp.ui.view.fragment.upcoming;
 
 import androidx.lifecycle.ViewModelProvider;
+import com.juan.nino.data.platform.NetworkHandler;
 import dagger.MembersInjector;
 import javax.inject.Provider;
 
@@ -9,23 +10,34 @@ public final class UpcomingMoviesFragment_MembersInjector
     implements MembersInjector<UpcomingMoviesFragment> {
   private final Provider<ViewModelProvider.Factory> vmFactoryProvider;
 
+  private final Provider<NetworkHandler> networkHandlerProvider;
+
   public UpcomingMoviesFragment_MembersInjector(
-      Provider<ViewModelProvider.Factory> vmFactoryProvider) {
+      Provider<ViewModelProvider.Factory> vmFactoryProvider,
+      Provider<NetworkHandler> networkHandlerProvider) {
     this.vmFactoryProvider = vmFactoryProvider;
+    this.networkHandlerProvider = networkHandlerProvider;
   }
 
   public static MembersInjector<UpcomingMoviesFragment> create(
-      Provider<ViewModelProvider.Factory> vmFactoryProvider) {
-    return new UpcomingMoviesFragment_MembersInjector(vmFactoryProvider);
+      Provider<ViewModelProvider.Factory> vmFactoryProvider,
+      Provider<NetworkHandler> networkHandlerProvider) {
+    return new UpcomingMoviesFragment_MembersInjector(vmFactoryProvider, networkHandlerProvider);
   }
 
   @Override
   public void injectMembers(UpcomingMoviesFragment instance) {
     injectVmFactory(instance, vmFactoryProvider.get());
+    injectNetworkHandler(instance, networkHandlerProvider.get());
   }
 
   public static void injectVmFactory(
       UpcomingMoviesFragment instance, ViewModelProvider.Factory vmFactory) {
     instance.vmFactory = vmFactory;
+  }
+
+  public static void injectNetworkHandler(
+      UpcomingMoviesFragment instance, NetworkHandler networkHandler) {
+    instance.networkHandler = networkHandler;
   }
 }

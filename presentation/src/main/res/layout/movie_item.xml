@@ -10,6 +10,8 @@
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="@dimen/corner_radius_card_movie"
         android:elevation="@dimen/elevation_card_movie"
+        android:layout_gravity="center_horizontal"
+        app:layout_anchorGravity="center_horizontal"
         app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.juan.nino.data.platform.NetworkHandler
 
 import com.juan.nino.moviesrappiapp.R
 import com.juan.nino.moviesrappiapp.model.MovieModel
@@ -34,6 +35,8 @@ class TopRatedMoviesFragment : BaseFragment(), OnMovieClickListener {
 
     @Inject
     lateinit var vmFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var networkHandler: NetworkHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,7 @@ class TopRatedMoviesFragment : BaseFragment(), OnMovieClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_top_rated_movies, container, false)
+        return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -70,7 +73,7 @@ class TopRatedMoviesFragment : BaseFragment(), OnMovieClickListener {
                 val totalItems = layoutManager.itemCount + 1
 
                 if ((visibleItemCount + pastVisibleItem) >= totalItems && !isRefreshed &&
-                    nextPage <= maxPages && nextPage != 0) {
+                    nextPage <= maxPages && nextPage != 0 && networkHandler.isConnected()) {
                     isRefreshed = true
                     getPage()
                 }

@@ -20,6 +20,7 @@ import com.juan.nino.moviesrappiapp.executor.JobExecutor;
 import com.juan.nino.moviesrappiapp.executor.JobExecutor_Factory;
 import com.juan.nino.moviesrappiapp.executor.UIThread;
 import com.juan.nino.moviesrappiapp.executor.UIThread_Factory;
+import com.juan.nino.moviesrappiapp.ui.view.fragment.detail.DetailMovieFragment;
 import com.juan.nino.moviesrappiapp.ui.view.fragment.popular.PopularMoviesFragment;
 import com.juan.nino.moviesrappiapp.ui.view.fragment.popular.PopularMoviesFragment_MembersInjector;
 import com.juan.nino.moviesrappiapp.ui.view.fragment.topRated.TopRatedMoviesFragment;
@@ -205,6 +206,9 @@ public final class DaggerAppComponent implements AppComponent {
   }
 
   @Override
+  public void inject(DetailMovieFragment detailMovieFragment) {}
+
+  @Override
   public void inject(SearchMovieActivity searchMovieActivity) {
     injectSearchMovieActivity(searchMovieActivity);
   }
@@ -212,18 +216,24 @@ public final class DaggerAppComponent implements AppComponent {
   private PopularMoviesFragment injectPopularMoviesFragment(PopularMoviesFragment instance) {
     PopularMoviesFragment_MembersInjector.injectVmFactory(
         instance, provideViewModelFactoryProvider.get());
+    PopularMoviesFragment_MembersInjector.injectNetworkHandler(
+        instance, provideNetworkHandlerProvider.get());
     return instance;
   }
 
   private TopRatedMoviesFragment injectTopRatedMoviesFragment(TopRatedMoviesFragment instance) {
     TopRatedMoviesFragment_MembersInjector.injectVmFactory(
         instance, provideViewModelFactoryProvider.get());
+    TopRatedMoviesFragment_MembersInjector.injectNetworkHandler(
+        instance, provideNetworkHandlerProvider.get());
     return instance;
   }
 
   private UpcomingMoviesFragment injectUpcomingMoviesFragment(UpcomingMoviesFragment instance) {
     UpcomingMoviesFragment_MembersInjector.injectVmFactory(
         instance, provideViewModelFactoryProvider.get());
+    UpcomingMoviesFragment_MembersInjector.injectNetworkHandler(
+        instance, provideNetworkHandlerProvider.get());
     return instance;
   }
 

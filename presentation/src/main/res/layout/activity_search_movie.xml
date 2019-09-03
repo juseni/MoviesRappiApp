@@ -17,7 +17,7 @@
                 android:id="@+id/toolbarSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_dark_gray"
+                android:background="@color/wedgewood"
                 android:theme="@style/AppBarTheme">
 
             <com.arlib.floatingsearchview.FloatingSearchView
@@ -42,7 +42,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewSearchMovie"
-                                               android:layout_width="match_parent"
+                                               android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"
+                                               android:layout_gravity="center_horizontal"
                                                android:scrollbars="vertical"/>
 </LinearLayout>

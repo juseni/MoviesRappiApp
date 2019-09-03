@@ -14,7 +14,7 @@ fun stringFormatDate(stringDate: String): String {
         val dateFormat = SimpleDateFormat(UI_FORMAT, Locale.ENGLISH)
         return dateFormat.format(formattedDate)
     } else {
-        return ""
+        return "--"
     }
 }
 
