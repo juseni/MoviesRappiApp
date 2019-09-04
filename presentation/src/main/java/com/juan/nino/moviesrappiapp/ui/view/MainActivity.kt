@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(), OnClickListener, OnFocusChangeListener {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        window.exitTransition = Slide(Gravity.LEFT)
+        window.exitTransition = Slide(Gravity.START)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
 
         setupViews()
