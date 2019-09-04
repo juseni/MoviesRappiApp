@@ -60,6 +60,10 @@ Provides Ui and date helpers and also the constants used in this module
 ### view_model:
 Contains 3 viewModels, each for one fragment or type of movie and their function is to store and manage UI-related data in a lifecycle conscious way. This folder also contains a BaseViewModel class that uses CompositeDisposable for adding all the observables and removing all them on @OnCleared of the lifecycle.
 
+# Screenshots
+
+<img src="https://github.com/juseni/MoviesRappiApp/blob/master/assets/Capture1.PNG" height="450"> <img src="https://github.com/juseni/MoviesRappiApp/blob/master/assets/Capture3.PNG" height="450"> <img src="https://github.com/juseni/MoviesRappiApp/blob/master/assets/Capture4.PNG" height="450">
+
 # Animation
 Navation Architecture components are used for implementing transitions between views. Moreover inside the application uses an anim translate for showing a loading more movies
 
